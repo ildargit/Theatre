@@ -76,19 +76,21 @@ namespace TheatreNB
             }
         }
 
-        #endregion
 
         bool IsChoosedPlay()
         {
-           return grpPlays.Controls.OfType<CheckBox>().Any(d => d.Checked);
+            return grpPlays.Controls.OfType<CheckBox>().Any(d => d.Checked);
         }
 
         private void Changed_conditionClick(object sender, EventArgs e)
         {
-            btnPlaceOrder_Click(sender, e);
+            if (IsChoosedPlay() && IsValidCreditCard(txtCreditCard.Text.Trim()))
+            {
+                Calculate();
+            }
         }
 
-
+        #endregion
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
@@ -98,7 +100,7 @@ namespace TheatreNB
                 return;
             }
 
-            if (!IsValidCreditCard(txtCreditCard.Text.Trim()))//2
+            if (!IsValidCreditCard(txtCreditCard.Text.Trim()))
             {
                 MessageBox.Show("Entered credit card is not valid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtCreditCard.Focus();
@@ -108,8 +110,7 @@ namespace TheatreNB
            
             Calculate();
         }
-
-       
+        
         private void frmTicketPurchase_Load(object sender, EventArgs e)
         {
             Setup();
