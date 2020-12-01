@@ -86,6 +86,7 @@ namespace TheatreNB
         {
             if (IsChoosedPlay() && IsValidCreditCard(txtCreditCard.Text.Trim()))
             {
+                lblDisplay.Text=String.Empty;
                 Calculate();
             }
         }
