@@ -92,7 +92,7 @@ namespace TheatreNB
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            if (!IsChoosedPlay())//1
+            if (!IsChoosedPlay())
             {
                 MessageBox.Show("Choose play!", "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
